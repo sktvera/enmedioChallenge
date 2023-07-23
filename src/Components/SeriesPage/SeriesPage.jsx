@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Grid, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
-import './SeriesPage.css'; // Importamos el archivo de estilos personalizado
+import { Container, Typography, Grid, Card, CardActionArea, CardMedia, CardContent } from '@mui/material';
+import md5 from 'md5';
+import './Assets/styles.css'; // Importamos el archivo de estilos personalizado
 
 function SeriesPage() {
   const [series, setSeries] = useState([]);
@@ -23,23 +24,23 @@ function SeriesPage() {
     };
 
     fetchSeries();
-  }, [series]);
+  }, []);
 
   return (
-    <Container className="series-container" maxWidth="lg">
+    <Container maxWidth="lg" className="series-container">
       <Typography variant="h3" component="h1" className="series-title">
         Series
       </Typography>
       <Grid container spacing={3}>
         {series.map((serie) => (
           <Grid item xs={12} sm={6} md={4} key={serie.id}>
-            <Card className="serie-item">
+            <Card>
               <CardActionArea>
                 <CardMedia
                   component="img"
-                  image={serie.thumbnail}
-                  alt={serie.title}
                   height="300"
+                  image={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
+                  alt={serie.title}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2" className="serie-title">

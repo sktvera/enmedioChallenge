@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import md5 from 'md5';
 import { Container, Grid, TextField, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
-import './ComicsPage.css'; // Importamos el archivo de estilos personalizado
+import './Assets/styles.css'; // Importamos el archivo de estilos personalizado
 
 function ComicsPage() {
   const [comics, setComics] = useState([]);
@@ -25,7 +25,7 @@ function ComicsPage() {
     };
 
     fetchComics();
-  }, [comics]);
+  }, []);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -36,7 +36,7 @@ function ComicsPage() {
   );
 
   return (
-    <Container className="comics-container" maxWidth="lg">
+    <Container maxWidth="lg" className="comics-container">
       <Typography variant="h3" component="h1" className="comics-title">
         Comics
       </Typography>
@@ -51,11 +51,11 @@ function ComicsPage() {
       <Grid container spacing={3}>
         {filteredComics.map((comic) => (
           <Grid item xs={12} sm={6} md={4} key={comic.id}>
-            <Card className="comic-item">
+            <Card>
               <CardActionArea>
                 <CardMedia
                   component="img"
-                  image={comic.thumbnail}
+                  image={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                   alt={comic.title}
                   height="300"
                 />
@@ -64,7 +64,7 @@ function ComicsPage() {
                     {comic.title}
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p" className="comic-description">
-                    {comic.description}
+                    {comic.description || 'No hay descripción disponible'}
                   </Typography>
                 </CardContent>
               </CardActionArea>

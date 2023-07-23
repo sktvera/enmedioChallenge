@@ -1,0 +1,36 @@
+/* Header.css */
+
+.appBar {
+    background-color: #202020 !important; /* Color de fondo de la barra de navegación */
+    font-weight: 600;
+    width: 100% !important; /* Ajustar el ancho al 100% */
+    margin: 0 !important; /* Eliminar márgenes para ocupar el ancho total */
+  }
+  
+  .title {
+    flex-grow: 1;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff; /* Color del texto del título */
+  }
+  
+  .title:hover {
+    text-decoration: none;
+    color: #ffffff; /* Color del texto del título al pasar el cursor sobre él */
+    cursor: pointer;
+    border-top: 5px solid #f50057 !important;
+    border-bottom: 5px solid #f50057 !important;
+  }
+  
+  .navButton {
+    margin-left: 16px; /* Espacio entre los botones de navegación */
+    color: #ffffff6b; /* Color del texto de los botones de navegación */
+  }
+  
+  .navButton:hover {
+    /* Color del texto de los botones de navegación al pasar el cursor sobre ellos */
+    border-bottom: 5px solid #f50057 !important;
+    cursor: pointer;
+    color: #ffffff;
+  }
+  
