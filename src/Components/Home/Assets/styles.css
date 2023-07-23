@@ -1,0 +1,55 @@
+.textHome {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; /* Agrega este estilo para centrar el texto */
+  }
+  
+  .textHome-Father {
+    padding: 20px; 
+  }
+
+  .textHome-Father:hover{
+    transition: 1s;
+    border-radius: 10px; 
+    background-color:#ffffff18 ;
+    cursor:pointer;
+    color: black;
+  
+  }
+  
+  .textHomeLine {
+    color: white;
+  }
+  
+  .textHome-Father h2{
+    font-size: 50px;
+  }
+
+  .hrefStyle{
+    color: white;
+    font-weight: 600;
+  }
+
+  .hrefStyle:hover{
+    
+    color: #f50057;
+  }
+
+  .logo{
+    width: 120px;
+    transition: 1s;
+  }
+
+  .logo:hover{
+    width: 160px;
+    cursor:pointer;
+    transition: 1s;
+  }
+  .logo-Father{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

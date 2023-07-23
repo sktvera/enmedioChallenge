@@ -27,7 +27,7 @@ function Footer() {
   return (
     <footer style={footerStyle}>
       <Typography variant="body2">
-        Challenge enmedio  <Link href="https://www.example.com" target="_blank" style={{ ...linkStyle, ...linkHoverStyle }}></Link>
+        Challenge enmedio  <Link href="https://www.example.com" target="_blank" style={{ ...linkStyle, ...linkHoverStyle }}> </Link>
       </Typography>
     </footer>
   );
