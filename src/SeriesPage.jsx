@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import md5 from 'md5';
+import './SeriesPage.css'; // Importamos el archivo de estilos personalizado
 
 function SeriesPage() {
   const [series, setSeries] = useState([]);
@@ -25,11 +26,17 @@ function SeriesPage() {
   }, [series]);
 
   return (
-    <div>
-      <h1>Series</h1>
-      <ul>
+    <div className="series-container">
+      <h1 className="series-title">Series</h1>
+      <ul className="series-list">
         {series.map((serie) => (
-          <li key={serie.id}>{serie.title}</li>
+          <li key={serie.id} className="serie-item">
+            <img src={serie.thumbnail} alt={serie.title} className="serie-image" />
+            <div className="serie-details">
+              <h3 className="serie-title">{serie.title}</h3>
+              <p className="serie-description">{serie.description}</p>
+            </div>
+          </li>
         ))}
       </ul>
     </div>

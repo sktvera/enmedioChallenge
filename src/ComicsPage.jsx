@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import md5 from 'md5';
+import './ComicsPage.css'; // Importamos el archivo de estilos personalizado
 
 function ComicsPage() {
   const [comics, setComics] = useState([]);
@@ -34,20 +35,24 @@ function ComicsPage() {
   );
 
   return (
-    <div>
-      <h1>Comics</h1>
-      <div className="form-group">
+    <div className="comics-container">
+      <h1 className="comics-title">Comics</h1>
+      <div className="search-form">
         <input
           type="text"
-          className="form-control"
+          className="search-input"
           placeholder="Buscar por nombre de cómic"
           value={searchTerm}
           onChange={handleSearchChange}
         />
       </div>
-      <ul>
+      <ul className="comics-list">
         {filteredComics.map((comic) => (
-          <li key={comic.id}>{comic.title}</li>
+          <li key={comic.id} className="comic-item">
+            <img src={comic.thumbnail} alt={comic.title} className="comic-image" />
+            <h3 className="comic-title">{comic.title}</h3>
+            <p className="comic-description">{comic.description}</p>
+          </li>
         ))}
       </ul>
     </div>
