@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Typography, Grid, Card, CardActionArea, CardMedia, CardContent } from '@mui/material';
+import { Container, Typography, Grid, Card, CardActionArea, CardMedia, CardContent, Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
 import md5 from 'md5';
-import './Assets/styles.css'; // Importamos el archivo de estilos personalizado
+import './Assets/styles.css';
 
 function SeriesPage() {
-  const [series, setSeries] = useState([]);
+  const [seriesList, setSeriesList] = useState([]);
+  const [selectedSeries, setSelectedSeries] = useState(null);
+  const [selectedSeriesDetails, setSelectedSeriesDetails] = useState({
+    creators: [],
+    stories: [],
+    characters: [],
+  });
 
   useEffect(() => {
     const publicKey = 'e1204a023988f306179fcc7b6baf0a59';
@@ -17,7 +23,7 @@ function SeriesPage() {
     const fetchSeries = async () => {
       try {
         const response = await axios.get(url);
-        setSeries(response.data.data.results);
+        setSeriesList(response.data.data.results);
       } catch (error) {
         console.error('Error al obtener datos de la API de Marvel:', error);
       }
@@ -26,28 +32,57 @@ function SeriesPage() {
     fetchSeries();
   }, []);
 
+  const fetchSeriesDetails = async (seriesId) => {
+    const publicKey = 'e1204a023988f306179fcc7b6baf0a59';
+    const privateKey = '659a96d7be8bdfcbf3dcb1beca9cee335db90aaf';
+    const ts = Date.now();
+    const hash = md5(ts + privateKey + publicKey);
+    const url = `https://gateway.marvel.com/v1/public/series/${seriesId}?apikey=${publicKey}&ts=${ts}&hash=${hash}`;
+
+    try {
+      const response = await axios.get(url);
+      const { creators, stories, characters } = response.data.data.results[0];
+      setSelectedSeriesDetails({
+        creators: creators.items,
+        stories: stories.items,
+        characters: characters.items,
+      });
+    } catch (error) {
+      console.error('Error al obtener detalles de la serie:', error);
+    }
+  };
+
+  const handleOpenModal = (selectedSeries) => {
+    setSelectedSeries(selectedSeries);
+    fetchSeriesDetails(selectedSeries.id);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedSeries(null);
+  };
+
   return (
     <Container maxWidth="lg" className="series-container">
       <Typography variant="h3" component="h1" className="series-title">
         Series
       </Typography>
       <Grid container spacing={3}>
-        {series.map((serie) => (
-          <Grid item xs={12} sm={6} md={4} key={serie.id}>
+        {seriesList.map((series) => (
+          <Grid item xs={12} sm={6} md={4} key={series.id}>
             <Card>
-              <CardActionArea>
+              <CardActionArea onClick={() => handleOpenModal(series)}>
                 <CardMedia
                   component="img"
                   height="300"
-                  image={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
-                  alt={serie.title}
+                  image={`${series.thumbnail.path}.${series.thumbnail.extension}`}
+                  alt={series.title}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2" className="serie-title">
-                    {serie.title}
+                    {series.title}
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p" className="serie-description">
-                    {serie.description}
+                    {series.description}
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -55,6 +90,50 @@ function SeriesPage() {
           </Grid>
         ))}
       </Grid>
+
+      <Dialog open={selectedSeries !== null} onClose={handleCloseModal} maxWidth="md">
+        {selectedSeries && (
+          <>
+            <DialogTitle>{selectedSeries.title}</DialogTitle>
+            <DialogContent>
+              <Typography gutterBottom variant="h6" component="h3">
+                Descripción:
+              </Typography>
+              <Typography variant="body1">{selectedSeries.description || 'Sin descripción'}</Typography>
+
+              <Typography gutterBottom variant="h6" component="h3">
+                Creadores:
+              </Typography>
+              <ul>
+                {selectedSeriesDetails.creators.map((creator) => (
+                  <li key={creator.resourceURI}>{creator.name} - {creator.role}</li>
+                ))}
+              </ul>
+
+              <Typography gutterBottom variant="h6" component="h3">
+                Historias:
+              </Typography>
+              <ul>
+                {selectedSeriesDetails.stories.map((story) => (
+                  <li key={story.resourceURI}>{story.name} - {story.type}</li>
+                ))}
+              </ul>
+
+              <Typography gutterBottom variant="h6" component="h3">
+                Personajes:
+              </Typography>
+              <ul>
+                {selectedSeriesDetails.characters.map((character) => (
+                  <li key={character.resourceURI}>{character.name}</li>
+                ))}
+              </ul>
+            </DialogContent>
+            <DialogActions>
+            <Button onClick={handleCloseModal}>Cerrar</Button>
+            </DialogActions>
+          </>
+        )}
+      </Dialog>
     </Container>
   );
 }
