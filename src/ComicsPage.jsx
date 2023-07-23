@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import md5 from 'md5';
+import { Container, Grid, TextField, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 import './ComicsPage.css'; // Importamos el archivo de estilos personalizado
 
 function ComicsPage() {
@@ -35,27 +36,43 @@ function ComicsPage() {
   );
 
   return (
-    <div className="comics-container">
-      <h1 className="comics-title">Comics</h1>
-      <div className="search-form">
-        <input
-          type="text"
-          className="search-input"
-          placeholder="Buscar por nombre de cómic"
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
-      </div>
-      <ul className="comics-list">
+    <Container className="comics-container" maxWidth="lg">
+      <Typography variant="h3" component="h1" className="comics-title">
+        Comics
+      </Typography>
+      <TextField
+        className="search-input"
+        label="Buscar por nombre de cómic"
+        variant="outlined"
+        fullWidth
+        value={searchTerm}
+        onChange={handleSearchChange}
+      />
+      <Grid container spacing={3}>
         {filteredComics.map((comic) => (
-          <li key={comic.id} className="comic-item">
-            <img src={comic.thumbnail} alt={comic.title} className="comic-image" />
-            <h3 className="comic-title">{comic.title}</h3>
-            <p className="comic-description">{comic.description}</p>
-          </li>
+          <Grid item xs={12} sm={6} md={4} key={comic.id}>
+            <Card className="comic-item">
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  image={comic.thumbnail}
+                  alt={comic.title}
+                  height="300"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2" className="comic-title">
+                    {comic.title}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p" className="comic-description">
+                    {comic.description}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
         ))}
-      </ul>
-    </div>
+      </Grid>
+    </Container>
   );
 }
 

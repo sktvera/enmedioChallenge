@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import ComicsPage from './ComicsPage';
 import SeriesPage from './SeriesPage';
+import { AppBar, Toolbar, Typography, Button } from '@mui/material';
 import './App.css'; // Importamos el archivo de estilos personalizado
 
 function App() {
@@ -12,23 +13,19 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-        <nav className="navbar">
-          <div className="container">
-            <h1 className="navbar-brand">Marvel Comics App</h1>
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link to="/comics" className="nav-link" onClick={handleRefreshPage}>
-                  Comics
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/series" className="nav-link" onClick={handleRefreshPage}>
-                  Series
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Marvel Comics App
+            </Typography>
+            <Button color="inherit" component={Link} to="/comics">
+              Comics
+            </Button>
+            <Button color="inherit" component={Link} to="/series">
+              Series
+            </Button>
+          </Toolbar>
+        </AppBar>
         <div className="content">
           <Switch>
             <Route path="/comics">

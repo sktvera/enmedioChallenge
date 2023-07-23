@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import md5 from 'md5';
+import { Container, Grid, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 import './SeriesPage.css'; // Importamos el archivo de estilos personalizado
 
 function SeriesPage() {
@@ -26,20 +26,35 @@ function SeriesPage() {
   }, [series]);
 
   return (
-    <div className="series-container">
-      <h1 className="series-title">Series</h1>
-      <ul className="series-list">
+    <Container className="series-container" maxWidth="lg">
+      <Typography variant="h3" component="h1" className="series-title">
+        Series
+      </Typography>
+      <Grid container spacing={3}>
         {series.map((serie) => (
-          <li key={serie.id} className="serie-item">
-            <img src={serie.thumbnail} alt={serie.title} className="serie-image" />
-            <div className="serie-details">
-              <h3 className="serie-title">{serie.title}</h3>
-              <p className="serie-description">{serie.description}</p>
-            </div>
-          </li>
+          <Grid item xs={12} sm={6} md={4} key={serie.id}>
+            <Card className="serie-item">
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  image={serie.thumbnail}
+                  alt={serie.title}
+                  height="300"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2" className="serie-title">
+                    {serie.title}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p" className="serie-description">
+                    {serie.description}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
         ))}
-      </ul>
-    </div>
+      </Grid>
+    </Container>
   );
 }
 
