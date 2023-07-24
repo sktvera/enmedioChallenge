@@ -1,0 +1,62 @@
+.comics-header {
+  width: 100%;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: auto 85%; 
+}
+
+.comics-title {
+  width: 70%;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.search-input {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.search-input-textfield {
+  background-color: white;
+}
+
+.search-input .MuiInputBase-input {
+  color: black;
+  padding-left: 30px;
+}
+
+.search-input .MuiOutlinedInput-inputAdornedStart {
+  padding-left: 10px;
+}
+
+.search-input .MuiSvgIcon-root {
+  color: black;
+  margin-right: 5px;
+}
+
+.search-input:focus {
+  border: 1px solid black !important;
+}
+
+.search-input.focused {
+  margin-bottom: 10px;
+  background-color: white !important;
+}
+
+.search-input.focused .MuiInputBase-input {
+  color: black !important;
+}
+
+@media screen and (max-width: 820px) {
+
+
+  .comics-header {
+   
+    display: grid;
+    grid-template-columns: auto auto; 
+  }
+}

@@ -15,7 +15,7 @@
   }
   .title:hover {
     text-decoration: none;
-    color: #ffffff;
+    color: #ffffff !important;
     cursor: pointer;
    
     border-top: 5px solid #f50057 !important;

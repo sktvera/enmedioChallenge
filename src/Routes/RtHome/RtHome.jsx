@@ -1,18 +1,12 @@
-import React from 'react'
-import Home from '../../Components/Home/Home'
-
- 
-
-
+import React from "react";
+import Home from "../../Components/Home/Home";
 
 const RtSeriesPage = () => {
+  return (
+    <div>
+      <Home />
+    </div>
+  );
+};
 
-    return(
-        <div>
-           <Home/>
-        </div>
-    )
-
-}
-
-export default RtSeriesPage
+export default RtSeriesPage;

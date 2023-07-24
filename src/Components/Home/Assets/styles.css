@@ -3,7 +3,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center; /* Agrega este estilo para centrar el texto */
+    text-align: center; 
   }
   
   .textHome-Father {
@@ -52,4 +52,32 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  
+
+  @media screen and (max-width: 1000px) {
+    .textHomeLine {
+    font-size: 12px;
+    }
+    h2{
+      font-size: 20px !important;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .textHomeLine {
+    font-size: 10px;
+    }
+    h2{
+      font-size: 14px !important;
+    }
+  }
+
+  @media screen and (max-width: 460px) {
+    .textHomeLine {
+    font-size: 8px;
+    }
+    h2{
+      font-size: 10px !important;
+    }
   }

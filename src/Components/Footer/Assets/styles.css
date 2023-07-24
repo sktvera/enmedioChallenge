@@ -1,22 +1,21 @@
-/* Footer.css */
 
 .footer {
-    background-color: #202020; /* Color de fondo del footer */
-    color: #ffffff; /* Color del texto del footer */
-    padding: 16px; /* Espaciado interno del footer */
+    background-color: #202020; 
+    color: #ffffff;
+    padding: 16px; 
     text-align: center;
-    position: fixed; /* Fijar el footer en la parte inferior de la pantalla */
+    position: fixed; 
     bottom: 0;
     left: 0;
     width: 100%;
   }
   
   .link {
-    color: #ffffff; /* Color del texto del enlace */
+    color: #ffffff; 
     text-decoration: none;
   }
   
   .link:hover {
-    text-decoration: underline; /* Subrayar el enlace al pasar el cursor sobre él */
+    text-decoration: underline; 
   }
   

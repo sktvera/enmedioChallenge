@@ -1,0 +1,87 @@
+
+.card {
+  height: 100%;
+  transition: transform 1s !important;
+}
+
+.card-content {
+  height: 150px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f0f0f0;
+}
+
+.card-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card-content::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.card-content::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.card-content::-webkit-scrollbar-thumb:active {
+  background-color: #333;
+}
+
+.card-content::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  transition: transform 1s ease;
+}
+
+.card:hover .comic-title {
+  color: #f50057;
+}
+
+.MuiDialog-paperWidthMd {
+  max-width: 800px;
+  margin: 20px;
+}
+
+.MuiDialogTitle-root {
+  background-color: #f50057;
+  color: #fff;
+}
+
+.MuiDialogContent-root {
+  padding: 20px;
+}
+
+.MuiButton-root {
+  color: #f50057;
+}
+
+.loader-container {
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  width: 100%;
+ 
+}
+
+.loader-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 8px;
+  color: #f50057;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}

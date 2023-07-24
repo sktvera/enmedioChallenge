@@ -14,7 +14,7 @@ function App() {
     <div className='main'>
       <Router>
         <Header />
-        <div className="page-container"> {/* Agregamos la clase "page-container" */}
+        <div className="page-container"> 
           <Switch>
             <Route path='/' exact component={RtHome} />
             <Route path='/comics' component={RtComicsPage} />

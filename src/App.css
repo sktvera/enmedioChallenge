@@ -1,7 +1,5 @@
-/* App.css */
-.page-container {
-   
-   
-    height: 100vh; /* Establecemos la altura del contenedor para ocupar toda la pantalla verticalmente */
-  }
-  
+body{
+    width: 100% !important;
+    background-image: url('./white.jpg');
+    object-fit: cover;
+}
