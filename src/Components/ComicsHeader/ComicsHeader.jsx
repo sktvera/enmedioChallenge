@@ -1,16 +1,17 @@
 import React from 'react';
 import { TextField, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import './Assets/styles.css'; 
+import './Assets/styles.css';
 
 const ComicsHeader = ({ searchTerm, handleSearchChange }) => {
   return (
     <div className='comics-header'>
-       <h1 className="comics-title">
+      <h1 className="comics-title">
         Comics
       </h1>
       <div className={`search-input ${searchTerm ? 'focused' : ''}`}>
         <TextField
+          placeholder='Buscar Comics!'
           variant="outlined"
           fullWidth
           value={searchTerm}
@@ -25,7 +26,6 @@ const ComicsHeader = ({ searchTerm, handleSearchChange }) => {
           }}
         />
       </div>
-     
     </div>
   );
 }

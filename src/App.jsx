@@ -14,9 +14,10 @@ function App() {
     <div className='main'>
       <Router>
         <Header />
-        <div className="page-container"> 
+        <div className=""> 
           <Switch>
-            <Route path='/' exact component={RtHome} />
+          <Route path='/enmediochallenge' element={<RtHome/>}/>
+            <Route path='/' exact={true} component={RtHome} />
             <Route path='/comics' component={RtComicsPage} />
             <Route path='/series' component={RtSeriesPage} />
           </Switch>

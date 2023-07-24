@@ -1,3 +1,10 @@
+.comics-page {
+  padding: 20px;
+}
+
+.header-container {
+  margin-bottom: 20px;
+}
 
 .card {
   height: 100%;
@@ -43,45 +50,122 @@
   color: #f50057;
 }
 
-.MuiDialog-paperWidthMd {
-  max-width: 800px;
-  margin: 20px;
-}
+.modal-container {
+  .MuiDialog-paperWidthMd {
+    max-width: 800px;
+    margin: 20px;
+  }
 
-.MuiDialogTitle-root {
-  background-color: #f50057;
-  color: #fff;
-}
+  .MuiDialogTitle-root {
+    background-color: #f50057;
+    color: #fff;
+  }
 
-.MuiDialogContent-root {
-  padding: 20px;
-}
+  .MuiDialogContent-root {
+    padding: 20px;
+  }
 
-.MuiButton-root {
-  color: #f50057;
+  .modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .modal-content {
+    margin-bottom: 20px;
+  }
+
+  .modal-description-title {
+    color: #f50057;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .modal-description {
+    margin-bottom: 20px;
+  }
+
+  .modal-related-title {
+    color: #f50057;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .modal-related-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .modal-related-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .modal-related-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .modal-related-name {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .modal-button-comic {
+    color: #fff;
+    background-color: #f50057;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: background-color 0.2s;
+  }
+
+  .modal-button-comic:hover {
+    background-color: #d5004f;
+  }
+
+  .modal-button-comic:focus {
+    outline: none;
+  }
 }
 
 .loader-container {
-  
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-
   width: 100%;
- 
+  background-color: white;
+  border-radius: 8px;
 }
 
 .loader-message {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px;
-  border-radius: 8px;
-  color: #f50057;
-  font-weight: bold;
-  text-align: center;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  color: #888;
+  font-family: Arial, sans-serif !important;
+  font-size: 16px;
+  
 }
+
+
+
+@media screen and (max-width: 600px) {
+
+
+  .loader-message {
+    width: 80%;
+    
+    font-size: 10px;
+    
+  }
+}
+

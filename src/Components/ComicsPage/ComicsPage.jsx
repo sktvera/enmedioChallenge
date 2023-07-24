@@ -1,11 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import md5 from 'md5';
-import { Container, Grid, Button, Card, CardActionArea, CardContent, CardMedia, Typography, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
-
-import '../../SharedStyles/styles.css';
+import {
+  Container,
+  Grid,
+  Button,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Typography,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions
+} from '@mui/material';
 
 import ComicsHeader from '../ComicsHeader/ComicsHeader';
+
+import '../../SharedStyles/styles.css'; 
 
 function ComicsPage() {
   const [comics, setComics] = useState([]);
@@ -68,12 +81,13 @@ function ComicsPage() {
 
   return (
     <Container className="comics-page">
-      <ComicsHeader searchTerm={searchTerm} handleSearchChange={handleSearchChange} />
+      <div className="header-container">
+        <ComicsHeader searchTerm={searchTerm} handleSearchChange={handleSearchChange} />
+      </div>
       <Grid container spacing={3}>
         {filteredComics.length === 0 ? (
           <div className="loader-container">
-            
-            <p style={{ color: '#888', fontStyle: 'italic', fontSize: '18px', marginTop: '10px', backgroundColor:'white',width:'100%', height:'40px',borderRadius:'10px',paddingTop:'18px' }}>
+            <p className="loader-message">
               Lo siento, no pudimos encontrar tu cómic. Seguro Stan Lee no lo ha escrito.
             </p>
           </div>
@@ -103,27 +117,41 @@ function ComicsPage() {
         )}
       </Grid>
 
-      <Dialog open={selectedComic !== null} onClose={handleCloseModal} maxWidth="md">
+      <Dialog open={selectedComic !== null} onClose={handleCloseModal} maxWidth="md" className="modal-container">
         {selectedComic && (
           <>
-            <DialogTitle>{selectedComic.title}</DialogTitle>
-            <DialogContent>
-              <Typography gutterBottom variant="h6" component="h3">
-                Descripción:
+            <DialogTitle className="modal-title">{selectedComic.title}</DialogTitle>
+            <DialogContent className="modal-content">
+            <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="h3"
+                  className="modal-description-title"
+                >
+                  Descripción:
+                </Typography>
+              <Typography variant="body1" className="modal-description">
+                {selectedComic.description || 'No hay descripción disponible'}
               </Typography>
-              <Typography variant="body1">{selectedComic.description || 'No hay descripción disponible'}</Typography>
 
-              <Typography gutterBottom variant="h6" component="h3">
+              <Typography gutterBottom variant="h6" component="h3" className="modal-related-title">
                 Cómics relacionados:
               </Typography>
-              <ul>
+              <ul className="modal-related-list">
                 {relatedComics.map((comic) => (
-                  <li key={comic.id}>{comic.name}</li>
+                  <li key={comic.id} className="modal-related-item">
+                    <img src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} alt={comic.name} className="modal-related-image" />
+                    <Typography variant="body2" className="modal-related-name">
+                      {comic.name}
+                    </Typography>
+                  </li>
                 ))}
               </ul>
             </DialogContent>
             <DialogActions>
-              <Button className='modalButton' onClick={handleCloseModal}>Cerrar</Button>
+              <Button className="modal-button-comic" onClick={handleCloseModal}>
+                Cerrar
+              </Button>
             </DialogActions>
           </>
         )}
