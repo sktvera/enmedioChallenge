@@ -4,6 +4,7 @@ import RtComicsPage from './Routes/RtComicsPage/RtComicsPage';
 import RtSeriesPage from './Routes/RtSeriesPage/RtSeriesPage';
 import RtHome from './Routes/RtHome/RtHome';
 
+
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 
@@ -16,7 +17,7 @@ function App() {
         <Header />
         <div className=""> 
           <Switch>
-          <Route path='/enmediochallenge' element={<RtHome/>}/>
+          <Route path='/enmediochallenge' element={RtHome}/>
             <Route path='/' exact={true} component={RtHome} />
             <Route path='/comics' component={RtComicsPage} />
             <Route path='/series' component={RtSeriesPage} />
