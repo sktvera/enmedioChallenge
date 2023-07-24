@@ -4,7 +4,7 @@ import ComicsPage from '../../Components/ComicsPage/ComicsPage'
 const RtComicsPage = () => {
 
     return(
-        <div>
+        <div style={{ marginTop: '10%' }}>
            <ComicsPage/>
         </div>
     )

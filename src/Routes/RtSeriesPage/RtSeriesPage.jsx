@@ -4,7 +4,8 @@ import SeriesPage from '../../Components/SeriesPage/SeriesPage'
 const RtSeriesPage = () => {
 
     return(
-        <div>
+        <div style={{ marginTop: '10%' }}>
+            <SeriesTitle/>
            <SeriesPage/>
         </div>
     )

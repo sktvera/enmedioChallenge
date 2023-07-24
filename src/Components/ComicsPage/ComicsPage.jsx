@@ -1,7 +1,22 @@
+// ComicsPage.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import md5 from 'md5';
-import { Container, Grid, TextField, Card, CardActionArea, CardContent, CardMedia, Typography, Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
+import {
+  Container,
+  Grid,
+  TextField,
+  Button,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Typography,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from '@mui/material';
 import './Assets/styles.css'; // Importamos el archivo de estilos personalizado
 
 function ComicsPage() {
@@ -9,7 +24,6 @@ function ComicsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedComic, setSelectedComic] = useState(null);
   const [relatedComics, setRelatedComics] = useState([]);
-  console.log(relatedComics)
 
   useEffect(() => {
     const publicKey = 'e1204a023988f306179fcc7b6baf0a59';
@@ -65,22 +79,30 @@ function ComicsPage() {
   };
 
   return (
-    <Container maxWidth="lg" className="comics-container">
+    <Container className="comics-container">
       <Typography variant="h3" component="h1" className="comics-title">
         Comics
       </Typography>
-      <TextField
-        className="search-input"
-        label="Buscar por nombre de cómic"
-        variant="outlined"
-        fullWidth
-        value={searchTerm}
-        onChange={handleSearchChange}
-      />
+      <div className="search-input"> {/* Contenedor para la barra de búsqueda */}
+        <TextField
+          label="Buscar por nombre de cómic"
+          variant="outlined"
+          fullWidth
+          value={searchTerm}
+          onChange={handleSearchChange}
+          InputProps={{
+            endAdornment: ( // Colocar el botón de búsqueda como elemento adyacente
+              <Button variant="contained" onClick={() => { /* Lógica de búsqueda */ }}>
+                Buscar
+              </Button>
+            ),
+          }}
+        />
+      </div>
       <Grid container spacing={3}>
         {filteredComics.map((comic) => (
           <Grid item xs={12} sm={6} md={4} key={comic.id}>
-            <Card>
+            <Card className="card">
               <CardActionArea onClick={() => handleOpenModal(comic)}>
                 <CardMedia
                   component="img"
@@ -88,7 +110,7 @@ function ComicsPage() {
                   alt={comic.title}
                   height="300"
                 />
-                <CardContent>
+                <CardContent className="card-content">
                   <Typography gutterBottom variant="h5" component="h2" className="comic-title">
                     {comic.title}
                   </Typography>
@@ -116,11 +138,9 @@ function ComicsPage() {
                 Cómics relacionados:
               </Typography>
               <ul>
-                {relatedComics.map((comic) => {
-                  
-                  return(
+                {relatedComics.map((comic) => (
                   <li key={comic.id}>{comic.name}</li>
-                )})}
+                ))}
               </ul>
             </DialogContent>
             <DialogActions>
