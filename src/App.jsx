@@ -17,7 +17,7 @@ function App() {
         <Header />
         <div className=""> 
           <Switch>
-          <Route path='/enmediochallenge' element={RtHome}/>
+          <Route path='/enmedioChallenge' element={RtHome}/>
             <Route path='/' exact={true} component={RtHome} />
             <Route path='/comics' component={RtComicsPage} />
             <Route path='/series' component={RtSeriesPage} />
